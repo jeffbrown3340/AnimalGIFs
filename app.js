@@ -85,4 +85,13 @@ $(document).on("click", ".animal-button", function() {
   displayAnimals(txt0);
 });
 
+//Pseudo-code of the incomplete GIF click handler (animate/un-animate toggle)
+//on click of GIF image
+// get the id N of the clicked image
+// get the corresponding string values from object[N]
+//using the jquery .attr() method:
+  // if the object is unanimated, img src = animated
+  // if the object was animated, img src = un-animated
+
+
 displayButtons();
