@@ -19,7 +19,7 @@ function animalGifDivConstructor(imgSrc, rating, id) {
 function loadAjxObjs(query) {
   // AJAX query to pull down the GIF objects by animal name (query) and put them into the HTML
   $.ajax({
-  	url: "http://api.giphy.com/v1/gifs/search?api_key=dc6zaTOxFJmzC&q="+query+"&limit=9&rating=r",
+  	url: "https://api.giphy.com/v1/gifs/search?api_key=dc6zaTOxFJmzC&q="+query+"&limit=9&rating=r",
   	method: "GET"
   	}).done(function(response) { 
       gifs = response.data;
