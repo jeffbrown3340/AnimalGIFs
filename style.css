@@ -1,16 +1,4 @@
-* {
-    padding: 15px;
-    border-style: hidden;
-    font-weight: bold;
-}
-
-.d-q {
-    background-color: green;
-    color: white;
-}
-
-.d-a:hover {
-    border-style: solid;
-    border-color: red;
-    border-width: 5px;
+.animalGifDiv {
+	padding: 15px;
+	float:left;
 }
