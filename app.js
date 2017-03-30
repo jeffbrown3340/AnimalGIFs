@@ -1,3 +1,24 @@
+//initial buttons
+var btnArr = ["dog", "cat", "spider", "ocelot", "spongebob"];
+
+function displayButtons() {
+  $("#animalButtons").empty()
+  for (i=0; i<btnArr.length; i++) {
+    buttonDivConstructor(btnArr[i], i);
+  }
+}
+
+function buttonDivConstructor(spanText, id) {
+  //construct a div for a button
+  //parent div each object with class, id, and text
+  var button = $("<button>");
+  $(button).attr("class", "btn btn-primary animal-button");
+  $(button).attr("id", "btn" + id);
+  $(button).text(spanText);
+  //append the collective object into the buttons div
+  $("#animalButtons").append(button);
+}
+
 function animalGifDivConstructor(imgSrc, rating, id) {
   //construct a div for image object with rating and image source
   //parent div each object with class and id
@@ -12,7 +33,7 @@ function animalGifDivConstructor(imgSrc, rating, id) {
   //append the children to the parent
   animalGifDiv.append(p);
   animalGifDiv.append(animalImage);
-  //prepend the collective object into the buttons div (this will later be the animals div)
+  //prepend the collective object into the animals div
   $("#animals").prepend(animalGifDiv);
 }
 
@@ -35,14 +56,33 @@ function loadAjxObjs(query) {
   });
 }
 
+function displayAnimals(t) {
+  //clear out whatever was there before
+  $("#animals").empty();
+  //do my thang
+  loadAjxObjs(t);
+}
+
+
+//SUBMIT BUTTON HANDLER
 $(document).on("click", "#b0", function() {
   // grab the input
 	var animalQuery = $("#i0").val();
   //only do something if there's input present
+  // and it's not already in the button array
 	if (animalQuery !== "") {
-    //clear out whatever was there before
-    $("#animals").empty();
-    //do my thang
-    loadAjxObjs(animalQuery)
+    if (!btnArr.includes(animalQuery)) {
+      btnArr.push(animalQuery);
+      displayButtons();
+    }
+    displayAnimals(animalQuery);
   }
 });
+
+// ANIMAL BUTTON HANDLER
+$(document).on("click", ".animal-button", function() {
+  var txt0 = $(this).text();
+  displayAnimals(txt0);
+});
+
+displayButtons();
